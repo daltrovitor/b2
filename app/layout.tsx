@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   icons: {
-    icon: "https://viraweb.online/viraweb6.png",
-    shortcut: "https://viraweb.online/viraweb6.png",
-    apple: "https://viraweb.online/viraweb6.png",
+    icon: "https://www.viraweb.online/favicon.png",
+    shortcut: "https://www.viraweb.online/favicon.png",
+    apple: "https://www.viraweb.online/favicon.png",
   },
 };
 
