@@ -233,9 +233,9 @@ export default function ProposalPage() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-14 my-4">
-                  {/* Logo PRX Vetorial em SVG com Queda em 0.3s */}
+                  {/* Logo PRX Vetorial em SVG com Queda em 0.6s */}
                   <div className="flex flex-col items-center">
-                    <PRXLogo size="lg" animated={true} />
+                    <PRXLogo size="lg" onClick={() => setShowIntro(true)} />
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#0B67FF] font-semibold mt-3">
                       Comunidade & Plataforma
                     </span>
@@ -247,7 +247,7 @@ export default function ProposalPage() {
 
                   {/* Logo B2 Eventos Vetorial em SVG sem Fundo */}
                   <div className="flex flex-col items-center">
-                    <B2Logo size="lg" animated={true} />
+                    <B2Logo size="lg" onClick={() => setShowIntro(true)} />
                     <span className="text-[10px] font-mono uppercase tracking-widest text-[#EA580C] font-semibold mt-3">
                       Operação & Experiências
                     </span>
