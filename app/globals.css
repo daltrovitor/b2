@@ -1,0 +1,124 @@
+/* Hello World */
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #09090b;
+  --brand-blue: #0b67ff;
+  --brand-cyan: #00d2ff;
+  --brand-purple: #7928ca;
+  --brand-magenta: #d11a8b;
+  --brand-gold: #d8a651;
+}
+
+::selection {
+  background-color: #0b67ff;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: #0b67ff;
+  color: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #ffffff;
+}
+
+body {
+  background-color: #ffffff;
+  color: #09090b;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Cursores obrigatórios em todos os controles interativos */
+a, button, [role="button"], input, select, textarea, .cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Scrollbar arquitetônica refinada */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Ocultar barra de rolagem em carrosséis/tabs touch */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Animações e Delays em 0.3s */
+@keyframes dropDownBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(6px) scale(1.02);
+  }
+  80% {
+    transform: translateY(-2px) scale(0.99);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-prx-drop-1 {
+  animation: dropDownBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0s both;
+}
+
+.animate-prx-drop-2 {
+  animation: dropDownBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.animate-prx-drop-3 {
+  animation: dropDownBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+.animate-prx-drop-4 {
+  animation: dropDownBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+.animate-prx-drop-5 {
+  animation: dropDownBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+}
+
+/* Estilos de Impressão Profissional (Geração de PDF da Proposta) */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt;
+  }
+  header, nav, button, .no-print {
+    display: none !important;
+  }
+  .print-avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .print-page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+}
