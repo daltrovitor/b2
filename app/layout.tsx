@@ -41,6 +41,11 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "https://viraweb.online/viraweb6.png",
+    shortcut: "https://viraweb.online/viraweb6.png",
+    apple: "https://viraweb.online/viraweb6.png",
+  },
 };
 
 export default function RootLayout({
