@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import PRXLogo from "./components/PRXLogo";
 import B2Logo from "./components/B2Logo";
 import VirawebLogo from "./components/VirawebLogo";
+import IntroSplash from "./components/IntroSplash";
 import {
   ArrowRight,
   Sparkles,
@@ -26,9 +27,11 @@ import {
   ChevronRight,
   TrendingUp,
   FileDown,
+  Play,
 } from "lucide-react";
 
 export default function ProposalPage() {
+  const [showIntro, setShowIntro] = useState(true);
   const [activeTab, setActiveTab] = useState<"prx-b2" | "b2-prx">("prx-b2");
   const [copied, setCopied] = useState(false);
 
@@ -48,6 +51,9 @@ export default function ProposalPage() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 selection:bg-[#0B67FF] selection:text-white relative overflow-x-hidden">
+      {/* Apresentação Inicial Estilo ViraWeb (Cadência 0.3s por Peça) */}
+      <IntroSplash isOpen={showIntro} onClose={() => setShowIntro(false)} />
+
       {/* ========================================================================= */}
       {/* 1. CABEÇALHO INSTITUCIONAL FIXO (Top Bar)                                 */}
       {/* ========================================================================= */}
@@ -198,6 +204,15 @@ export default function ProposalPage() {
                 >
                   <Share2 className="w-3.5 h-3.5" />
                   <span>{copied ? "Link Copiado!" : "Compartilhar Proposta"}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowIntro(true)}
+                  className="w-full mt-1.5 inline-flex items-center justify-center gap-1.5 py-1.5 text-[11px] font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer"
+                  title="Rever apresentação animada de abertura"
+                >
+                  <Play className="w-3 h-3 text-[#0066FF] fill-[#0066FF]" />
+                  <span>Rever apresentação da marca</span>
                 </button>
               </div>
             </div>
@@ -888,21 +903,14 @@ export default function ProposalPage() {
                 <div className="text-xs text-slate-400 text-center sm:text-left">
                   Pronto para transformar essa aliança em resultados práticos?
                 </div>
-                <div className="flex items-center gap-3 w-full sm:w-auto">
+                <div className="flex items-center justify-end w-full sm:w-auto">
                   <button
                     onClick={handlePrint}
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold text-slate-300 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-sm transition-colors cursor-pointer"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#7928CA] to-[#0066FF] hover:brightness-110 rounded-sm transition-all shadow-md active:scale-[0.98] cursor-pointer"
                   >
                     <FileDown className="w-4 h-4" />
-                    <span>Salvar PDF</span>
+                    <span>Salvar / Exportar Proposta em PDF</span>
                   </button>
-                  <a
-                    href="mailto:contato@prx.com.br?subject=Alian%C3%A7a%20Estrat%C3%A9gica%20PRX%20%C3%97%20B2%20Eventos"
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3 text-xs sm:text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 rounded-sm transition-all shadow-md active:scale-[0.98] cursor-pointer"
-                  >
-                    <span>Agendar Reunião Executiva</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
                 </div>
               </div>
             </section>

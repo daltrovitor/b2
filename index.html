@@ -25,11 +25,11 @@
     }
     
     ::selection {
-      background-color: #0B67FF;
+      background-color: #0066FF;
       color: #ffffff;
     }
     ::-moz-selection {
-      background-color: #0B67FF;
+      background-color: #0066FF;
       color: #ffffff;
     }
 
@@ -41,38 +41,38 @@
     @keyframes prxDropBounce {
       0% {
         opacity: 0;
-        transform: translateY(-50px) scale(0.9);
+        transform: translateY(-90px);
       }
       60% {
         opacity: 1;
-        transform: translateY(6px) scale(1.02);
+        transform: translateY(6px);
       }
       80% {
-        transform: translateY(-2px) scale(0.99);
+        transform: translateY(-2px);
       }
       100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
       }
     }
 
     .prx-drop-emblem {
-      animation: prxDropBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.0s both;
+      animation: prxDropBounce 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.0s both;
     }
     .prx-drop-p {
-      animation: prxDropBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+      animation: prxDropBounce 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
     }
     .prx-drop-r {
-      animation: prxDropBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+      animation: prxDropBounce 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
     }
     .prx-drop-x {
-      animation: prxDropBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+      animation: prxDropBounce 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
     }
     .prx-drop-slogan {
-      animation: prxDropBounce 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
+      animation: prxDropBounce 0.65s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
     }
 
-    /* Scrollbar arquitetônica */
+    /* Scrollbar sutil */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -90,12 +90,120 @@
 
     @media print {
       body { background: #ffffff !important; color: #000000 !important; font-size: 11pt; }
-      header, nav, button, .no-print { display: none !important; }
+      header, nav, button, aside, #intro-splash, .no-print { display: none !important; }
       .print-avoid-break { break-inside: avoid; page-break-inside: avoid; }
     }
   </style>
 </head>
-<body class="bg-white text-slate-900 min-h-screen">
+<body class="bg-white text-slate-900 min-h-screen selection:bg-[#0066FF] selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- APRESENTAÇÃO INICIAL (Idêntica ao modelo de proposta.viraweb.online)       -->
+  <!-- ========================================================================= -->
+  <aside id="intro-splash" aria-label="Apresentação inicial PRX × B2 Eventos" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white transition-all duration-700 select-none opacity-100">
+    <!-- Botão de Pular Introdução no Canto Superior Direito -->
+    <div class="absolute top-6 right-6 z-20">
+      <button type="button" onclick="dismissIntroSplash()" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold tracking-wide text-zinc-600 hover:text-zinc-950 bg-zinc-100 hover:bg-zinc-200 rounded-sm cursor-pointer transition-colors duration-200 shadow-xs" aria-label="Pular introdução animada e abrir proposta">
+        <span>Pular introdução</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <!-- Conteúdo Central da Apresentação com Logos -->
+    <div class="w-full max-w-xl sm:max-w-2xl px-6 flex flex-col items-center">
+      <div class="w-full flex flex-col items-center justify-center">
+        <!-- Logo PRX em SVG com peças caindo a cada 0.3s -->
+        <div class="w-full max-w-[420px] sm:max-w-[460px]">
+          <svg viewBox="0 0 500 350" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto overflow-visible" aria-label="Logotipo Oficial PRX">
+            <defs>
+              <linearGradient id="splash-prx-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7928CA" />
+                <stop offset="50%" stop-color="#0066FF" />
+                <stop offset="100%" stop-color="#00D2FF" />
+              </linearGradient>
+
+              <linearGradient id="splash-line-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#7928CA" />
+                <stop offset="100%" stop-color="#00D2FF" />
+              </linearGradient>
+
+              <filter id="splash-glow" x="-10%" y="-10%" width="120%" height="120%">
+                <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0066FF" flood-opacity="0.15" />
+              </filter>
+            </defs>
+
+            <!-- 1. Emblema X - Cai aos 0.3s (Step 1) -->
+            <g id="splash-part-emblem" style="transform:translateY(-140px);opacity:0;transition:transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1)">
+              <path d="M 155 25 L 215 25 L 275 85 L 215 145 L 155 145 L 215 85 Z" fill="#0F172A" filter="url(#splash-glow)" />
+              <path d="M 345 25 L 285 25 L 225 85 L 285 145 L 345 145 L 285 85 Z" fill="url(#splash-prx-grad)" />
+            </g>
+
+            <!-- 2. Letra 'P' - Cai aos 0.6s (Step 2) -->
+            <g id="splash-part-p" style="transform:translateY(-140px);opacity:0;transition:transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1)">
+              <path d="M 75 175 L 138 175 C 160 175 172 186 172 201 C 172 216 160 227 138 227 L 103 227 L 103 265 L 75 265 Z M 103 197 L 103 205 L 135 205 C 144 205 149 203 149 201 C 149 199 144 197 135 197 Z" fill="#0F172A" />
+            </g>
+
+            <!-- 3. Letra 'R' - Cai aos 0.9s (Step 3) -->
+            <g id="splash-part-r" style="transform:translateY(-140px);opacity:0;transition:transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1)">
+              <path d="M 205 175 L 268 175 C 290 175 302 186 302 201 C 302 214 292 222 278 225 L 305 265 L 275 265 L 250 227 L 233 227 L 233 265 L 205 265 Z M 233 197 L 233 205 L 265 205 C 274 205 279 203 279 201 C 279 199 274 197 265 197 Z" fill="#0F172A" />
+            </g>
+
+            <!-- 4. Letra 'X' - Cai aos 1.2s (Step 4) -->
+            <g id="splash-part-x" style="transform:translateY(-140px);opacity:0;transition:transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1)">
+              <path d="M 330 175 L 360 175 L 388 220 L 416 175 L 446 175 L 404 225 L 448 265 L 418 265 L 388 230 L 358 265 L 328 265 L 372 225 Z" fill="url(#splash-prx-grad)" />
+            </g>
+
+            <!-- 5. Slogan & Linha de Acento - Revelam aos 1.5s (Step 5) -->
+            <g id="splash-part-slogan" style="transform:translateY(20px);opacity:0;transition:transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1)">
+              <text x="250" y="305" text-anchor="middle" font-size="13.5" font-weight="700" letter-spacing="0.38em" fill="#475569" class="uppercase">EXPERIÊNCIAS QUE CONECTAM GERAÇÕES</text>
+              <rect x="210" y="322" width="80" height="3.5" rx="1.75" fill="url(#splash-line-grad)" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- 6. Conexão & Logo B2 Eventos (Step 6) -->
+        <div id="splash-part-b2" class="flex items-center justify-center gap-6 mt-6 transition-all duration-600 opacity-0 translate-y-6">
+          <span class="text-2xl font-light text-slate-300 select-none">×</span>
+
+          <!-- Logo B2 em Vetor Puro -->
+          <div class="w-36 sm:w-44">
+            <svg viewBox="0 0 240 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto overflow-visible" aria-label="Logo B2 Eventos">
+              <path d="M 18 30 L 29 16 L 33 35 L 21 40 Z" fill="#C97B1A" />
+              <path d="M 29 16 L 47 24 L 62 37 L 38 52 Z" fill="#964202" />
+              <path d="M 29 38 C 28 22 30 11 33 4 C 35 2 37 7 40 14 C 44 21 51 26 59 35 C 64 40 64 44 62 48 C 54 52 44 54 38 51 C 32 49 30 43 29 38 Z" fill="#FF5900" />
+              <path d="M 31 32 C 31 20 33 12 34 7 C 35 6 37 11 39 16 C 43 23 49 28 55 35 C 57 40 55 44 51 46 C 45 49 39 49 35 46 C 32 42 31 37 31 32 Z" fill="#FFA326" />
+              <path d="M 21 40 L 38 52 L 37 87 C 30 87 24 84 19 76 C 13 69 13 51 21 40 Z" fill="#E09F44" />
+              <path d="M 38 52 L 70 40 L 69 72 C 60 80 50 86 37 87 Z" fill="#D28320" />
+              <text x="86" y="79" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="70" fill="#3F4349" letter-spacing="-0.03em">B2</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- 7. Subtítulo Institucional da Proposta (Step 7) -->
+        <div id="splash-part-sub" class="mt-6 text-center transition-all duration-700 opacity-0 translate-y-4">
+          <div class="h-0.5 w-12 bg-gradient-to-r from-[#7928CA] to-[#00D2FF] mx-auto mb-3"></div>
+          <p class="text-xs sm:text-sm font-bold tracking-widest uppercase text-slate-800">
+            PRX × B2 EVENTOS
+          </p>
+          <p class="text-[11px] sm:text-xs text-slate-500 mt-1 max-w-md">
+            A próxima geração precisa de um lugar para acontecer.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Indicadores de Progresso na Base (Padrão 8 Etapas) -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+      <span id="pill-0" class="h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200"></span>
+      <span id="pill-1" class="h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200"></span>
+      <span id="pill-2" class="h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200"></span>
+      <span id="pill-3" class="h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200"></span>
+      <span id="pill-4" class="h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200"></span>
+      <span id="pill-5" class="h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200"></span>
+      <span id="pill-6" class="h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200"></span>
+      <span id="pill-7" class="h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200"></span>
+    </div>
+  </aside>
 
   <!-- ========================================================================= -->
   <!-- 1. CABEÇALHO INSTITUCIONAL FIXO                                           -->
@@ -105,43 +213,43 @@
       <!-- Aliança de Logos no Topo -->
       <div class="flex items-center gap-3 sm:gap-5">
         <a href="#hero" class="flex items-center gap-2 group cursor-pointer" title="PRX">
-          <svg class="w-24 sm:w-28 h-auto overflow-visible" viewBox="0 0 380 230" fill="none">
+          <svg class="w-24 sm:w-28 h-auto overflow-visible" viewBox="0 0 500 350" fill="none">
             <defs>
               <linearGradient id="nav-prx-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#7928CA" />
-                <stop offset="55%" stop-color="#0066FF" />
+                <stop offset="50%" stop-color="#0066FF" />
                 <stop offset="100%" stop-color="#00D2FF" />
               </linearGradient>
             </defs>
-            <path d="M 132 18 L 190 18 L 165 47 L 183 68 L 157 98 L 132 98 L 160 68 L 142 47 Z" fill="#0F172A" />
-            <path d="M 226 18 L 248 18 L 202 68 L 222 90 L 198 98 L 181 98 L 196 82 L 176 60 Z" fill="url(#nav-prx-grad)" />
-            <path d="M 85 116 L 126 116 C 145 116 156 125 156 139 C 156 154 144 163 126 163 L 105 163 L 105 192 L 85 192 Z M 105 131 L 105 148 L 124 148 C 133 148 138 144 138 139 C 138 135 133 131 124 131 Z" fill="#0F172A" />
-            <path d="M 172 116 L 214 116 C 232 116 244 125 244 138 C 244 149 235 156 222 159 L 246 192 L 224 192 L 203 163 L 192 163 L 192 192 L 172 192 Z M 192 131 L 192 147 L 211 147 C 221 147 226 143 226 139 C 226 134 221 131 211 131 Z" fill="#0F172A" />
-            <path d="M 258 116 L 279 116 L 297 150 L 315 116 L 336 116 L 308 154 L 338 192 L 316 192 L 297 158 L 278 192 L 256 192 L 286 154 Z" fill="url(#nav-prx-grad)" />
+            <path d="M 155 25 L 215 25 L 275 85 L 215 145 L 155 145 L 215 85 Z" fill="#0F172A" />
+            <path d="M 345 25 L 285 25 L 225 85 L 285 145 L 345 145 L 285 85 Z" fill="url(#nav-prx-grad)" />
+            <path d="M 75 175 L 138 175 C 160 175 172 186 172 201 C 172 216 160 227 138 227 L 103 227 L 103 265 L 75 265 Z M 103 197 L 103 205 L 135 205 C 144 205 149 203 149 201 C 149 199 144 197 135 197 Z" fill="#0F172A" />
+            <path d="M 205 175 L 268 175 C 290 175 302 186 302 201 C 302 214 292 222 278 225 L 305 265 L 275 265 L 250 227 L 233 227 L 233 265 L 205 265 Z M 233 197 L 233 205 L 265 205 C 274 205 279 203 279 201 C 279 199 274 197 265 197 Z" fill="#0F172A" />
+            <path d="M 330 175 L 360 175 L 388 220 L 416 175 L 446 175 L 404 225 L 448 265 L 418 265 L 388 230 L 358 265 L 328 265 L 372 225 Z" fill="url(#nav-prx-grad)" />
           </svg>
         </a>
         <span class="text-slate-300 font-light text-xl sm:text-2xl select-none">×</span>
         <a href="#hero" class="flex items-center gap-2 group cursor-pointer" title="B2 Eventos">
-          <svg class="w-16 sm:w-20 h-auto overflow-visible" viewBox="0 0 200 90" fill="none">
-            <path d="M 16 28 L 26 15 L 30 33 L 19 37 Z" fill="#D28628" />
-            <path d="M 26 15 L 43 23 L 58 35 L 35 48 Z" fill="#9C4A08" />
-            <path d="M 26 36 C 25 21 27 10 30 3 C 32 1 34 6 36 12 C 40 19 47 24 55 33 C 60 38 60 42 58 45 C 50 49 41 51 35 48 C 29 46 27 41 26 36 Z" fill="#FF6500" />
-            <path d="M 28 30 C 28 19 30 11 31 6 C 32 5 34 10 36 15 C 40 22 46 26 51 33 C 54 38 52 42 48 44 C 42 47 36 47 32 44 C 29 40 28 35 28 30 Z" fill="#FFA533" />
-            <path d="M 19 37 L 35 48 L 34 81 C 28 81 22 78 17 71 C 12 64 12 47 19 37 Z" fill="#E2A64E" />
-            <path d="M 35 48 L 65 37 L 64 67 C 56 75 46 80 34 81 Z" fill="#D38E2F" />
-            <text x="80" y="74" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="65" fill="#474B51" letter-spacing="-0.02em">B2</text>
+          <svg class="w-16 sm:w-20 h-auto overflow-visible" viewBox="0 0 240 100" fill="none">
+            <path d="M 18 30 L 29 16 L 33 35 L 21 40 Z" fill="#C97B1A" />
+            <path d="M 29 16 L 47 24 L 62 37 L 38 52 Z" fill="#964202" />
+            <path d="M 29 38 C 28 22 30 11 33 4 C 35 2 37 7 40 14 C 44 21 51 26 59 35 C 64 40 64 44 62 48 C 54 52 44 54 38 51 C 32 49 30 43 29 38 Z" fill="#FF5900" />
+            <path d="M 31 32 C 31 20 33 12 34 7 C 35 6 37 11 39 16 C 43 23 49 28 55 35 C 57 40 55 44 51 46 C 45 49 39 49 35 46 C 32 42 31 37 31 32 Z" fill="#FFA326" />
+            <path d="M 21 40 L 38 52 L 37 87 C 30 87 24 84 19 76 C 13 69 13 51 21 40 Z" fill="#E09F44" />
+            <path d="M 38 52 L 70 40 L 69 72 C 60 80 50 86 37 87 Z" fill="#D28320" />
+            <text x="86" y="79" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="70" fill="#3F4349" letter-spacing="-0.03em">B2</text>
           </svg>
         </a>
       </div>
 
       <!-- Navegação Padrão F (Desktop) -->
       <nav class="hidden md:flex items-center gap-7 text-xs font-semibold tracking-wider uppercase text-slate-600">
-        <a href="#oportunidade" class="hover:text-[#0B67FF] transition-colors">A Oportunidade</a>
-        <a href="#quem-somos" class="hover:text-[#0B67FF] transition-colors">Rafael Molina</a>
-        <a href="#parceria" class="hover:text-[#0B67FF] transition-colors">A Parceria</a>
-        <a href="#prx-pass" class="hover:text-[#0B67FF] transition-colors">PRX Pass</a>
-        <a href="#escolas" class="hover:text-[#0B67FF] transition-colors">Escolas</a>
-        <a href="#visao" class="hover:text-[#0B67FF] transition-colors">A Visão</a>
+        <a href="#oportunidade" class="hover:text-[#0066FF] transition-colors">A Oportunidade</a>
+        <a href="#quem-somos" class="hover:text-[#0066FF] transition-colors">Rafael Molina</a>
+        <a href="#parceria" class="hover:text-[#0066FF] transition-colors">A Parceria</a>
+        <a href="#prx-pass" class="hover:text-[#0066FF] transition-colors">PRX Pass</a>
+        <a href="#escolas" class="hover:text-[#0066FF] transition-colors">Escolas</a>
+        <a href="#visao" class="hover:text-[#0066FF] transition-colors">A Visão</a>
       </nav>
 
       <!-- Ações -->
@@ -150,7 +258,7 @@
           <i data-lucide="file-down" class="w-3.5 h-3.5"></i>
           <span>Exportar PDF</span>
         </button>
-        <a href="#visao" class="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#0B67FF] hover:bg-[#0052D4] rounded-sm transition-all shadow-sm active:scale-[0.98]">
+        <a href="#visao" class="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold text-white bg-[#0066FF] hover:bg-[#0052D4] rounded-sm transition-all shadow-sm active:scale-[0.98]">
           <span>Validar Aliança</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </a>
@@ -165,89 +273,112 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
       
       <!-- ======================================================================= -->
-      <!-- HASTE VERTICAL ESQUERDA (The F-Spine)                                   -->
+      <!-- HASTE VERTICAL ESQUERDA (The F-Spine)                                    -->
       <!-- ======================================================================= -->
       <aside class="lg:col-span-3 hidden lg:block">
         <div class="sticky top-28 space-y-8">
+          <!-- Box de Metadados da Proposta -->
           <div class="p-5 border border-slate-200 bg-slate-50/60 rounded-sm">
             <div class="flex items-center justify-between mb-3">
               <span class="text-[10px] font-mono font-bold tracking-widest text-slate-500 uppercase">Documento Estratégico</span>
-              <span class="inline-flex items-center px-2 py-0.5 text-[10px] font-semibold text-[#0B67FF] bg-blue-50 border border-blue-200 rounded-sm">Confidencial</span>
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>
             </div>
-            <h3 class="text-base font-bold text-slate-900 leading-snug">PRX × B2 Eventos</h3>
-            <p className="text-xs text-slate-500 mt-1">Parceria de Geração Recorrente de Negócios & Experiências</p>
-            <div class="mt-4 pt-4 border-t border-slate-200/80 flex items-center justify-between text-xs text-slate-600">
-              <span>Ano de Ativação</span>
-              <span class="font-mono font-semibold text-slate-900">2026 / 2027</span>
+            <h3 class="text-sm font-bold text-slate-900 leading-snug">Aliança Comercial PRX &amp; B2 Eventos</h3>
+            <p class="text-xs text-slate-500 mt-1">Setembro de 2026 • Confidencial</p>
+            <div class="mt-4 pt-3 border-t border-slate-200/80 space-y-2 text-xs">
+              <div class="flex justify-between items-center">
+                <span class="text-slate-500">Formato:</span>
+                <span class="font-mono font-semibold text-slate-800">Parceria 360°</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-500">Público-Alvo:</span>
+                <span class="font-mono font-semibold text-slate-800">Geração Z &amp; Alpha</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-500">Status:</span>
+                <span class="font-mono text-[10px] font-bold uppercase px-1.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-sm">Disponível p/ Fechamento</span>
+              </div>
             </div>
           </div>
 
-          <div class="space-y-1">
-            <p class="text-[11px] font-mono uppercase font-bold tracking-wider text-slate-400 mb-2 px-3">Índice da Proposta</p>
-            <a href="#hero" class="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-600 hover:text-[#0B67FF] hover:bg-slate-50 rounded-sm transition-colors group">
-              <span>01. Aliança da Nova Geração</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-[#0B67FF]"></i>
+          <!-- Sumário da Haste F -->
+          <div class="space-y-1 text-xs">
+            <div class="px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+              Sumário de Leitura (Padrão F)
+            </div>
+            <a href="#hero" class="flex items-center justify-between px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-sm transition-colors group">
+              <span>00. Abertura Oficial</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#0066FF]"></i>
             </a>
-            <a href="#oportunidade" class="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-600 hover:text-[#0B67FF] hover:bg-slate-50 rounded-sm transition-colors group">
-              <span>02. A Oportunidade</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-[#0B67FF]"></i>
+            <a href="#oportunidade" class="flex items-center justify-between px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-sm transition-colors group">
+              <span>01. A Oportunidade</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#0066FF]"></i>
             </a>
-            <a href="#quem-somos" class="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-600 hover:text-[#0B67FF] hover:bg-slate-50 rounded-sm transition-colors group">
-              <span>03. Quem Está por Trás</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-[#0B67FF]"></i>
+            <a href="#quem-somos" class="flex items-center justify-between px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-sm transition-colors group">
+              <span>02. Rafael Molina</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#0066FF]"></i>
             </a>
-            <a href="#parceria" class="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-600 hover:text-[#0B67FF] hover:bg-slate-50 rounded-sm transition-colors group">
-              <span>04. Modelo de Parceria</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-[#0B67FF]"></i>
+            <a href="#parceria" class="flex items-center justify-between px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-sm transition-colors group">
+              <span>03. A Parceria</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#0066FF]"></i>
             </a>
-            <a href="#prx-pass" class="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-600 hover:text-[#0B67FF] hover:bg-slate-50 rounded-sm transition-colors group">
-              <span>05. B2 no PRX PASS</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-[#0B67FF]"></i>
+            <a href="#prx-pass" class="flex items-center justify-between px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-sm transition-colors group">
+              <span>04. PRX Pass</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#0066FF]"></i>
             </a>
-            <a href="#escolas" class="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-600 hover:text-[#0B67FF] hover:bg-slate-50 rounded-sm transition-colors group">
-              <span>06. Frentes Escolares</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-[#0B67FF]"></i>
+            <a href="#escolas" class="flex items-center justify-between px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-sm transition-colors group">
+              <span>05. Escolas</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#0066FF]"></i>
             </a>
-            <a href="#visao" class="flex items-center justify-between px-3 py-2 text-xs font-medium text-slate-600 hover:text-[#0B67FF] hover:bg-slate-50 rounded-sm transition-colors group">
-              <span>07. A Visão & Fechamento</span>
-              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-[#0B67FF]"></i>
+            <a href="#visao" class="flex items-center justify-between px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-sm transition-colors group">
+              <span>06. A Visão</span>
+              <i data-lucide="chevron-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#0066FF]"></i>
             </a>
           </div>
 
+          <!-- Cartão de Apoio e Botão Rever Apresentação -->
           <div class="p-4 border border-slate-200/70 bg-white rounded-sm text-xs text-slate-600 space-y-2.5">
             <div class="flex items-center gap-2 text-slate-900 font-semibold">
-              <i data-lucide="sparkles" class="w-4 h-4 text-[#0B67FF]"></i>
+              <i data-lucide="sparkles" class="w-4 h-4 text-[#0066FF]"></i>
               <span>Sinergia Imediata</span>
             </div>
             <p class="text-[11px] leading-relaxed text-slate-500">
               A PRX entra com a base e a fidelização digital. A B2 entra com a operação líder em experiências ao vivo.
             </p>
+            <button onclick="window.print()" class="w-full mt-2 inline-flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-sm transition-colors cursor-pointer">
+              <i data-lucide="file-down" class="w-3.5 h-3.5"></i>
+              <span>Exportar PDF / Imprimir</span>
+            </button>
+            <button type="button" onclick="reopenIntroSplash()" class="w-full mt-1.5 inline-flex items-center justify-center gap-1.5 py-1.5 text-[11px] font-medium text-slate-500 hover:text-slate-900 transition-colors cursor-pointer" title="Rever apresentação animada de abertura">
+              <i data-lucide="play" class="w-3 h-3 text-[#0066FF] fill-[#0066FF]"></i>
+              <span>Rever apresentação da marca</span>
+            </button>
           </div>
         </div>
       </aside>
 
       <!-- ======================================================================= -->
-      <!-- CONTEÚDO PRINCIPAL (Barras Horizontais F-Pattern)                       -->
+      <!-- CONTEÚDO PRINCIPAL (Barras Horizontais do Padrão F)                     -->
       <!-- ======================================================================= -->
       <div class="lg:col-span-9 space-y-16 sm:space-y-24">
-
-        <!-- ------------------------------------------------------------------- -->
-        <!-- SEÇÃO 01: HERO SECTION COM ANIMAÇÃO PRX (Letras caindo em 0.3s)     -->
-        <!-- ------------------------------------------------------------------- -->
+        
+        <!-- --------------------------------------------------------------------- -->
+        <!-- SEÇÃO 00: HERO SECTION (Barra Horizontal Superior do F)               -->
+        <!-- --------------------------------------------------------------------- -->
         <section id="hero" class="scroll-mt-24 space-y-8">
-          <div class="p-8 sm:p-14 border border-slate-200 bg-gradient-to-b from-slate-50/80 via-white to-white rounded-sm shadow-xs flex flex-col items-center justify-center text-center relative overflow-hidden">
+          <div class="p-8 sm:p-12 border border-slate-200 bg-gradient-to-b from-slate-50/80 via-white to-white rounded-sm shadow-xs flex flex-col items-center justify-center text-center relative overflow-hidden">
             <div class="absolute top-3 right-3 text-[10px] font-mono text-slate-400 uppercase tracking-widest no-print">
-              ✦ Animação de entrada cinética (cadência 0,3s)
+              ✦ Clique no logo para rever a queda das letras (0,3s)
             </div>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-14 my-4">
               <!-- LOGO PRX SVG VETORIAL COM AS LETRAS CAINDO SEQUENCIALMENTE -->
               <div id="prx-animated-logo" class="flex flex-col items-center cursor-pointer select-none" onclick="replayPrxAnimation()" title="Clique para reviver a animação de queda da PRX">
-                <svg class="w-64 sm:w-80 h-auto overflow-visible" viewBox="0 0 380 230" fill="none">
+                <svg class="w-64 sm:w-80 h-auto overflow-visible" viewBox="0 0 500 350" fill="none">
                   <defs>
                     <linearGradient id="hero-prx-grad" x1="0%" y1="0%" x2="100%" y2="100%">
                       <stop offset="0%" stop-color="#7928CA" />
-                      <stop offset="55%" stop-color="#0066FF" />
+                      <stop offset="50%" stop-color="#0066FF" />
                       <stop offset="100%" stop-color="#00D2FF" />
                     </linearGradient>
                     <linearGradient id="hero-prx-line" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -255,57 +386,58 @@
                       <stop offset="100%" stop-color="#00D2FF" />
                     </linearGradient>
                     <filter id="hero-prx-glow" x="-10%" y="-10%" width="120%" height="120%">
-                      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0066FF" flood-opacity="0.18" />
+                      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0066FF" flood-opacity="0.15" />
                     </filter>
                   </defs>
 
                   <!-- 1. Emblema Superior (0.0s) -->
                   <g id="prx-part-emblem" class="prx-drop-emblem origin-center">
-                    <path d="M 132 18 L 190 18 L 165 47 L 183 68 L 157 98 L 132 98 L 160 68 L 142 47 Z" fill="#0F172A" filter="url(#hero-prx-glow)" />
-                    <path d="M 226 18 L 248 18 L 202 68 L 222 90 L 198 98 L 181 98 L 196 82 L 176 60 Z" fill="url(#hero-prx-grad)" />
+                    <path d="M 155 25 L 215 25 L 275 85 L 215 145 L 155 145 L 215 85 Z" fill="#0F172A" filter="url(#hero-prx-glow)" />
+                    <path d="M 345 25 L 285 25 L 225 85 L 285 145 L 345 145 L 285 85 Z" fill="url(#hero-prx-grad)" />
                   </g>
 
                   <!-- 2. Letra 'P' (cai aos 0.3s) -->
                   <g id="prx-part-p" class="prx-drop-p">
-                    <path d="M 85 116 L 126 116 C 145 116 156 125 156 139 C 156 154 144 163 126 163 L 105 163 L 105 192 L 85 192 Z M 105 131 L 105 148 L 124 148 C 133 148 138 144 138 139 C 138 135 133 131 124 131 Z" fill="#0F172A" />
+                    <path d="M 75 175 L 138 175 C 160 175 172 186 172 201 C 172 216 160 227 138 227 L 103 227 L 103 265 L 75 265 Z M 103 197 L 103 205 L 135 205 C 144 205 149 203 149 201 C 149 199 144 197 135 197 Z" fill="#0F172A" />
                   </g>
 
                   <!-- 3. Letra 'R' (cai aos 0.6s) -->
                   <g id="prx-part-r" class="prx-drop-r">
-                    <path d="M 172 116 L 214 116 C 232 116 244 125 244 138 C 244 149 235 156 222 159 L 246 192 L 224 192 L 203 163 L 192 163 L 192 192 L 172 192 Z M 192 131 L 192 147 L 211 147 C 221 147 226 143 226 139 C 226 134 221 131 211 131 Z" fill="#0F172A" />
+                    <path d="M 205 175 L 268 175 C 290 175 302 186 302 201 C 302 214 292 222 278 225 L 305 265 L 275 265 L 250 227 L 233 227 L 233 265 L 205 265 Z M 233 197 L 233 205 L 265 205 C 274 205 279 203 279 201 C 279 199 274 197 265 197 Z" fill="#0F172A" />
                   </g>
 
                   <!-- 4. Letra 'X' (cai aos 0.9s) -->
                   <g id="prx-part-x" class="prx-drop-x">
-                    <path d="M 258 116 L 279 116 L 297 150 L 315 116 L 336 116 L 308 154 L 338 192 L 316 192 L 297 158 L 278 192 L 256 192 L 286 154 Z" fill="url(#hero-prx-grad)" />
+                    <path d="M 330 175 L 360 175 L 388 220 L 416 175 L 446 175 L 404 225 L 448 265 L 418 265 L 388 230 L 358 265 L 328 265 L 372 225 Z" fill="url(#hero-prx-grad)" />
                   </g>
 
                   <!-- 5. Slogan (cai aos 1.2s) -->
                   <g id="prx-part-slogan" class="prx-drop-slogan">
-                    <text x="190" y="212" text-anchor="middle" font-size="8.5" font-weight="700" letter-spacing="0.36em" fill="#475569" class="uppercase">EXPERIÊNCIAS QUE CONECTAM GERAÇÕES</text>
-                    <rect x="165" y="222" width="50" height="2" rx="1" fill="url(#hero-prx-line)" />
+                    <text x="250" y="305" text-anchor="middle" font-size="13.5" font-weight="700" letter-spacing="0.38em" fill="#475569" class="uppercase">EXPERIÊNCIAS QUE CONECTAM GERAÇÕES</text>
+                    <rect x="210" y="322" width="80" height="3.5" rx="1.75" fill="url(#hero-prx-line)" />
                   </g>
                 </svg>
-                <span class="text-[10px] font-mono uppercase tracking-widest text-[#0B67FF] font-semibold mt-3">Comunidade & Plataforma</span>
+                <span class="text-[10px] font-mono uppercase tracking-widest text-[#0066FF] font-semibold mt-3">Comunidade &amp; Plataforma</span>
               </div>
 
               <span class="text-3xl sm:text-4xl font-light text-slate-300 select-none">×</span>
 
-              <!-- LOGO B2 EVENTOS SVG VETORIAL SEM FUNDO (NOVA IDENTIDADE) -->
+              <!-- LOGO B2 EVENTOS SVG VETORIAL SEM FUNDO -->
               <div class="flex flex-col items-center">
-                <svg class="w-48 sm:w-60 h-auto overflow-visible" viewBox="0 0 200 90" fill="none">
-                  <path d="M 16 28 L 26 15 L 30 33 L 19 37 Z" fill="#D28628" />
-                  <path d="M 26 15 L 43 23 L 58 35 L 35 48 Z" fill="#9C4A08" />
-                  <path d="M 26 36 C 25 21 27 10 30 3 C 32 1 34 6 36 12 C 40 19 47 24 55 33 C 60 38 60 42 58 45 C 50 49 41 51 35 48 C 29 46 27 41 26 36 Z" fill="#FF6500" />
-                  <path d="M 28 30 C 28 19 30 11 31 6 C 32 5 34 10 36 15 C 40 22 46 26 51 33 C 54 38 52 42 48 44 C 42 47 36 47 32 44 C 29 40 28 35 28 30 Z" fill="#FFA533" />
-                  <path d="M 19 37 L 35 48 L 34 81 C 28 81 22 78 17 71 C 12 64 12 47 19 37 Z" fill="#E2A64E" />
-                  <path d="M 35 48 L 65 37 L 64 67 C 56 75 46 80 34 81 Z" fill="#D38E2F" />
-                  <text x="80" y="74" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="600" font-size="65" fill="#474B51" letter-spacing="-0.02em">B2</text>
+                <svg class="w-48 sm:w-60 h-auto overflow-visible" viewBox="0 0 240 100" fill="none">
+                  <path d="M 18 30 L 29 16 L 33 35 L 21 40 Z" fill="#C97B1A" />
+                  <path d="M 29 16 L 47 24 L 62 37 L 38 52 Z" fill="#964202" />
+                  <path d="M 29 38 C 28 22 30 11 33 4 C 35 2 37 7 40 14 C 44 21 51 26 59 35 C 64 40 64 44 62 48 C 54 52 44 54 38 51 C 32 49 30 43 29 38 Z" fill="#FF5900" />
+                  <path d="M 31 32 C 31 20 33 12 34 7 C 35 6 37 11 39 16 C 43 23 49 28 55 35 C 57 40 55 44 51 46 C 45 49 39 49 35 46 C 32 42 31 37 31 32 Z" fill="#FFA326" />
+                  <path d="M 21 40 L 38 52 L 37 87 C 30 87 24 84 19 76 C 13 69 13 51 21 40 Z" fill="#E09F44" />
+                  <path d="M 38 52 L 70 40 L 69 72 C 60 80 50 86 37 87 Z" fill="#D28320" />
+                  <text x="86" y="79" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="70" fill="#3F4349" letter-spacing="-0.03em">B2</text>
                 </svg>
-                <span class="text-[10px] font-mono uppercase tracking-widest text-[#EA580C] font-semibold mt-3">Operação & Experiências</span>
+                <span class="text-[10px] font-mono uppercase tracking-widest text-[#EA580C] font-semibold mt-3">Operação &amp; Experiências</span>
               </div>
             </div>
 
+            <!-- Linha de separação técnica -->
             <div class="w-16 h-[2px] bg-slate-200 my-4"></div>
 
             <div class="max-w-2xl text-center space-y-3">
@@ -319,404 +451,311 @@
             </div>
           </div>
 
-          <!-- Cards de Métricas e Tese -->
+          <!-- Tríade de Métricas -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="p-5 border border-slate-200 bg-white rounded-sm">
-              <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Comunidade Ativa</div>
-              <div class="text-xl font-bold text-slate-900 mt-1">Geração Z & Escolas</div>
-              <div class="text-xs text-slate-500 mt-1">Influência contínua e presença no dia a dia da juventude.</div>
+              <span class="text-2xl sm:text-3xl font-black text-[#0066FF] font-mono block">450k+</span>
+              <span class="text-xs font-bold text-slate-800 uppercase tracking-wider block mt-1">Jovens Formandos</span>
+              <p class="text-[11px] text-slate-500 mt-1">Público anual em transição escolar e universitária no Brasil.</p>
             </div>
             <div class="p-5 border border-slate-200 bg-white rounded-sm">
-              <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Operação e Estrutura</div>
-              <div class="text-xl font-bold text-slate-900 mt-1">Autoridade B2</div>
-              <div class="text-xs text-slate-500 mt-1">Execução de eventos memoráveis e experiências de alto padrão.</div>
+              <span class="text-2xl sm:text-3xl font-black text-[#EA580C] font-mono block">100%</span>
+              <span class="text-xs font-bold text-slate-800 uppercase tracking-wider block mt-1">Território B2</span>
+              <p class="text-[11px] text-slate-500 mt-1">Domínio absoluto do momento ápice da jornada presencial.</p>
             </div>
             <div class="p-5 border border-slate-200 bg-white rounded-sm">
-              <div class="text-[10px] font-mono uppercase tracking-wider text-slate-400">Modelo de Negócio</div>
-              <div class="text-xl font-bold text-slate-900 mt-1">Geração Recorrente</div>
-              <div class="text-xs text-slate-500 mt-1">Negócios perenes através de produtos, ativações e formaturas.</div>
+              <span class="text-2xl sm:text-3xl font-black text-slate-900 font-mono block">360°</span>
+              <span class="text-xs font-bold text-slate-800 uppercase tracking-wider block mt-1">Ciclo Completo</span>
+              <p class="text-[11px] text-slate-500 mt-1">Do engajamento no app diário até a celebração no palco.</p>
             </div>
           </div>
         </section>
 
-        <!-- ------------------------------------------------------------------- -->
-        <!-- SEÇÃO 02: A OPORTUNIDADE (Barra Horizontal F-2)                     -->
-        <!-- ------------------------------------------------------------------- -->
+        <!-- --------------------------------------------------------------------- -->
+        <!-- SEÇÃO 01: A OPORTUNIDADE                                              -->
+        <!-- --------------------------------------------------------------------- -->
         <section id="oportunidade" class="scroll-mt-24 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">01 / Panorama Estratégico</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">A OPORTUNIDADE</h2>
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] px-2 py-0.5 bg-blue-50 border border-blue-100 rounded-sm">01 / Diagnóstico</span>
+            <div class="h-px bg-slate-200 flex-1"></div>
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            <div class="p-7 border border-slate-200 bg-slate-50/50 rounded-sm flex flex-col justify-between space-y-6">
-              <div class="space-y-4">
-                <div class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold text-[#0B67FF] bg-blue-50 border border-blue-200 rounded-sm">
-                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                  <span>Ecossistema PRX</span>
-                </div>
-                <p class="text-base text-slate-700 leading-relaxed">
-                  A <strong>PRX</strong> nasce com uma proposta simples: <span class="text-slate-900 font-semibold">ser o ecossistema da nova geração</span>.
-                </p>
-                <p class="text-sm text-slate-600 leading-relaxed">
-                  Um app que conecta, em um único ambiente, <strong>clube de benefícios</strong>, <strong>banco digital</strong>, <strong>investimentos</strong> e <strong>experiências</strong>, acompanhando o jovem em diferentes momentos da sua vida.
-                </p>
-              </div>
-              <div class="p-4 bg-white border border-slate-200 rounded-sm text-xs font-medium text-slate-800 flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-[#0B67FF]"></div>
-                <span>A PRX leva a comunidade.</span>
-              </div>
-            </div>
-
-            <div class="p-7 border border-slate-200 bg-slate-50/50 rounded-sm flex flex-col justify-between space-y-6">
-              <div class="space-y-4">
-                <div class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold text-[#EA580C] bg-orange-50 border border-orange-200 rounded-sm">
-                  <i data-lucide="flame" class="w-3.5 h-3.5"></i>
-                  <span>Autoridade B2 Eventos</span>
-                </div>
-                <p class="text-base text-slate-700 leading-relaxed">
-                  A <strong>B2</strong> já domina um território essencial dessa jornada: <span class="text-slate-900 font-semibold">eventos e experiências presenciais</span>.
-                </p>
-                <p class="text-sm text-slate-600 leading-relaxed">
-                  A proposta é conectar esses dois mundos. O online alimenta o presencial, e o presencial potencializa a fidelização e a força do aplicativo.
-                </p>
-              </div>
-              <div class="p-4 bg-white border border-slate-200 rounded-sm text-xs font-medium text-slate-800 flex items-center gap-3">
-                <div class="w-2 h-2 rounded-full bg-[#EA580C]"></div>
-                <span>A B2 transforma comunidade em experiência.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="p-6 bg-slate-950 text-white rounded-sm flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="space-y-1">
-              <div class="text-xs font-mono tracking-widest uppercase text-slate-400">A Tese Fundamental</div>
-              <p class="text-base sm:text-lg font-medium text-slate-200">
-                "A PRX leva a comunidade. A B2 transforma comunidade em experiência."
-              </p>
-            </div>
-            <div class="shrink-0 flex items-center gap-3 font-mono text-xs text-slate-400">
-              <span class="text-[#0B67FF] font-bold">PRX</span>
-              <span>+</span>
-              <span class="text-[#EA580C] font-bold">B2</span>
-              <span>=</span>
-              <span class="text-white font-bold">Aliança Total</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- ------------------------------------------------------------------- -->
-        <!-- SEÇÃO 03: QUEM ESTÁ POR TRÁS                                        -->
-        <!-- ------------------------------------------------------------------- -->
-        <section id="quem-somos" class="scroll-mt-24 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">02 / Liderança & Conexões</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">QUEM ESTÁ POR TRÁS</h2>
-          </div>
-
-          <div class="p-8 border border-slate-200 bg-white rounded-sm">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div class="md:col-span-8 space-y-4">
-                <div class="flex items-center gap-3">
-                  <h3 class="text-2xl font-bold text-slate-950">Rafael Molina</h3>
-                  <span class="text-xs font-medium text-slate-500 bg-slate-100 px-2.5 py-1 rounded-sm">Jornalista & Empresário</span>
-                </div>
-                <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  Rafael Molina é <strong>jornalista</strong>, <strong>empresário</strong> e <strong>criador de conteúdo</strong> com forte atuação junto ao público jovem, escolas e marcas de prestígio.
-                </p>
-                <p class="text-sm text-slate-600 leading-relaxed">
-                  Essa conexão deu origem à PRX: transformar relacionamento e influência em um <span class="text-slate-900 font-semibold">ecossistema capaz de gerar consumo, experiências, oportunidades e negócios</span> para a nova geração.
-                </p>
-                <p class="text-sm font-semibold text-[#0B67FF]">
-                  Agora, queremos parceiros estratégicos que cresçam dentro desse ecossistema.
-                </p>
-              </div>
-
-              <div class="md:col-span-4 p-5 bg-slate-50 border border-slate-200 rounded-sm space-y-3">
-                <div class="text-xs font-mono uppercase tracking-wider text-slate-400">Atuação Comprovada</div>
-                <ul class="space-y-2 text-xs text-slate-700">
-                  <li class="flex items-center gap-2">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-[#0B67FF] shrink-0"></i>
-                    <span>Relacionamento direto com escolas e colégios</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-[#0B67FF] shrink-0"></i>
-                    <span>Canal de comunicação jovem de alta tração</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-[#0B67FF] shrink-0"></i>
-                    <span>Conexão ativa com marcas e patrocinadores</span>
-                  </li>
-                  <li class="flex items-center gap-2">
-                    <i data-lucide="check-circle-2" class="w-4 h-4 text-[#0B67FF] shrink-0"></i>
-                    <span>Foco em geração recorrente de valor</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- ------------------------------------------------------------------- -->
-        <!-- SEÇÃO 04: A PARCERIA (Duas Vias Estruturadas)                       -->
-        <!-- ------------------------------------------------------------------- -->
-        <section id="parceria" class="scroll-mt-24 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">03 / Modelo de Cooperação</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">A PARCERIA</h2>
-            <p class="text-sm sm:text-base text-slate-600 mt-2 max-w-3xl">
-              Propomos que a <strong>B2 Eventos</strong> se torne parceira estratégica da <strong>PRX</strong> para eventos e experiências, construindo uma relação de geração recorrente de negócios.
+          
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">A OPORTUNIDADE</h2>
+          
+          <div class="prose prose-slate max-w-none space-y-4 text-sm sm:text-base leading-relaxed text-slate-600">
+            <p class="text-base sm:text-lg font-medium text-slate-900 leading-relaxed">
+              A <strong class="text-[#0066FF]">PRX</strong> nasce com uma proposta simples: ser o <strong>ecossistema da nova geração</strong>.
             </p>
-          </div>
-
-          <!-- Botões de Troca de Abas -->
-          <div class="flex items-center gap-2 border-b border-slate-200 pb-3">
-            <button id="tab-btn-prx-b2" onclick="switchTab('prx-b2')" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all bg-[#0B67FF] text-white shadow-xs">
-              Via 1: PRX → B2 (Geração de Negócios)
-            </button>
-            <button id="tab-btn-b2-prx" onclick="switchTab('b2-prx')" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all text-slate-600 hover:text-slate-900 bg-slate-100">
-              Via 2: B2 → PRX (Eventos Proprietários)
-            </button>
-          </div>
-
-          <!-- Conteúdo Aba 1: PRX -> B2 -->
-          <div id="tab-content-prx-b2" class="space-y-6">
-            <div class="p-6 border border-blue-200 bg-blue-50/40 rounded-sm">
-              <h3 class="text-lg font-bold text-slate-950">PRX → B2: Novo Canal Comercial e de Comunicação</h3>
-              <p class="text-sm text-slate-600 mt-1">A PRX passa a atuar como um novo canal comercial e de comunicação ativo para a B2:</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#0B67FF]/50 transition-colors">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-[#0B67FF] mb-2">
-                  <span>01</span><span class="w-6 h-[1px] bg-blue-300"></span>
-                </div>
-                <h4 class="text-sm font-bold text-slate-900 mb-1">Divulgação nas Redes de Rafael Molina</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Divulgação dos eventos da B2 nas redes de Rafael Molina com alta taxa de engajamento.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#0B67FF]/50 transition-colors">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-[#0B67FF] mb-2">
-                  <span>02</span><span class="w-6 h-[1px] bg-blue-300"></span>
-                </div>
-                <h4 class="text-sm font-bold text-slate-900 mb-1">Realização Preferencial dos Eventos</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Realização preferencial dos eventos PRX em parceria direta e exclusiva com a B2.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#0B67FF]/50 transition-colors">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-[#0B67FF] mb-2">
-                  <span>03</span><span class="w-6 h-[1px] bg-blue-300"></span>
-                </div>
-                <h4 class="text-sm font-bold text-slate-900 mb-1">Indicação para Marcas Comerciais</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Indicação da B2 para marcas parceiras e patrocinadores comerciais do ecossistema PRX.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#0B67FF]/50 transition-colors">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-[#0B67FF] mb-2">
-                  <span>04</span><span class="w-6 h-[1px] bg-blue-300"></span>
-                </div>
-                <h4 class="text-sm font-bold text-slate-900 mb-1">Aproximação com Escolas & Instituições</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Aproximação da B2 com colégios e instituições do relacionamento próximo de Rafael.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#0B67FF]/50 transition-colors">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-[#0B67FF] mb-2">
-                  <span>05</span><span class="w-6 h-[1px] bg-blue-300"></span>
-                </div>
-                <h4 class="text-sm font-bold text-slate-900 mb-1">Geração de Oportunidades Múltiplas</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Geração de oportunidades para formaturas, festas, encontros corporativos e eventos escolares.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#0B67FF]/50 transition-colors">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-[#0B67FF] mb-2">
-                  <span>06</span><span class="w-6 h-[1px] bg-blue-300"></span>
-                </div>
-                <h4 class="text-sm font-bold text-slate-900 mb-1">Projetos Voltados à Geração Z</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Criação e desenvolvimento de projetos B2 direcionados autenticamente à Geração Z.</p>
-              </div>
-            </div>
-
-            <div class="p-4 bg-slate-100 border border-slate-200 rounded-sm text-center">
-              <p class="text-xs font-semibold text-slate-800">
-                🎯 <strong>Não queremos apenas divulgar a B2. Queremos gerar negócios para a B2.</strong>
-              </p>
+            <p>
+              Um app que conecta, em um único ambiente, clube de benefícios, banco digital, investimentos e experiências, acompanhando o jovem em diferentes momentos da sua vida.
+            </p>
+            <p>
+              A <strong class="text-[#EA580C]">B2</strong> já domina um território essencial dessa jornada: <strong>eventos e experiências presenciais</strong>.
+            </p>
+            <div class="p-4 sm:p-5 bg-slate-50 border-l-4 border-[#0066FF] rounded-r-sm text-slate-900 font-medium my-4">
+              A proposta é conectar esses dois mundos. A PRX leva o digital, a fidelização e a recorrência. A B2 leva a força da experiência física e o momento mais marcante da vida desse público.
             </div>
           </div>
 
-          <!-- Conteúdo Aba 2: B2 -> PRX -->
-          <div id="tab-content-b2-prx" class="space-y-6 hidden">
-            <div class="p-6 border border-orange-200 bg-orange-50/40 rounded-sm">
-              <h3 class="text-lg font-bold text-slate-950">B2 → PRX: Eventos Proprietários em Co-construção</h3>
-              <p class="text-sm text-slate-600 mt-1">
-                Entrada da B2 como parceira dos eventos proprietários da PRX, participando da construção, operação e modelo comercial de cada projeto conforme sua natureza:
-              </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+            <div class="p-6 border border-slate-200 bg-white rounded-sm space-y-3">
+              <div class="flex items-center gap-2.5 text-[#0066FF] font-bold">
+                <i data-lucide="zap" class="w-5 h-5"></i>
+                <h3 class="text-sm uppercase tracking-wider text-slate-900">O Que a PRX Leva</h3>
+              </div>
+              <ul class="space-y-2 text-xs text-slate-600">
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#0066FF] mt-1.5 flex-shrink-0"></span>
+                  <span>Ambiente digital único com app de fidelidade, carteira digital e vantagens exclusivas.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#0066FF] mt-1.5 flex-shrink-0"></span>
+                  <span>Relacionamento contínuo durante os 365 dias do ano, e não só na data da festa.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#0066FF] mt-1.5 flex-shrink-0"></span>
+                  <span>Acesso direto a marcas globais de consumo desejadas pelos jovens.</span>
+                </li>
+              </ul>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#EA580C]/50 transition-colors">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Lifestyle</span>
-                  <i data-lucide="coffee" class="w-4 h-4 text-[#EA580C]"></i>
-                </div>
-                <h4 class="text-base font-bold text-slate-900 mb-1">PRX UP</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Coffee party, música, esporte e lifestyle.</p>
+            <div class="p-6 border border-slate-200 bg-white rounded-sm space-y-3">
+              <div class="flex items-center gap-2.5 text-[#EA580C] font-bold">
+                <i data-lucide="flame" class="w-5 h-5"></i>
+                <h3 class="text-sm uppercase tracking-wider text-slate-900">O Que a B2 Domina</h3>
               </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#EA580C]/50 transition-colors">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Performance</span>
-                  <i data-lucide="activity" class="w-4 h-4 text-[#EA580C]"></i>
-                </div>
-                <h4 class="text-base font-bold text-slate-900 mb-1">PRX RUN</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Corrida e experiência de bem-estar para a nova geração.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#EA580C]/50 transition-colors">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Negócios</span>
-                  <i data-lucide="briefcase" class="w-4 h-4 text-[#EA580C]"></i>
-                </div>
-                <h4 class="text-base font-bold text-slate-900 mb-1">PRX FOUNDERS</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Jovens empreendedores, founders, investidores e novas ideias.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#EA580C]/50 transition-colors">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Benefícios</span>
-                  <i data-lucide="ticket" class="w-4 h-4 text-[#EA580C]"></i>
-                </div>
-                <h4 class="text-base font-bold text-slate-900 mb-1">PRX PASS EXPERIENCES</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Experiências exclusivas para membros do clube de benefícios.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-white rounded-sm hover:border-[#EA580C]/50 transition-colors">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">Festa Mensal</span>
-                  <i data-lucide="flame" class="w-4 h-4 text-[#EA580C]"></i>
-                </div>
-                <h4 class="text-base font-bold text-slate-900 mb-1">RESENHA</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Festa mensal da PRX em que, a cada edição, um jovem diferente assume o papel de host, trazendo sua identidade, seus convidados e sua rede para criar uma experiência única.</p>
-              </div>
-
-              <div class="p-5 border border-slate-200 bg-slate-50 rounded-sm flex flex-col justify-center text-xs text-slate-600">
-                <p class="font-semibold text-slate-900 mb-1">Acordos Pré-Definidos:</p>
-                <p>Cada projeto poderá ter seu modelo específico de sociedade, divisão de receitas e responsabilidades, definido previamente entre PRX e B2.</p>
-              </div>
+              <ul class="space-y-2 text-xs text-slate-600">
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#EA580C] mt-1.5 flex-shrink-0"></span>
+                  <span>Autoridade incontestável no mercado de formaturas e eventos no Brasil.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#EA580C] mt-1.5 flex-shrink-0"></span>
+                  <span>Produção impecável de festivais, viagens de formatura e comemorações presenciais.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#EA580C] mt-1.5 flex-shrink-0"></span>
+                  <span>Canal institucional consolidado com as comissões e diretorias das principais escolas e faculdades.</span>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
 
-        <!-- ------------------------------------------------------------------- -->
-        <!-- SEÇÃO 05: B2 DENTRO DO PRX PASS                                     -->
-        <!-- ------------------------------------------------------------------- -->
-        <section id="prx-pass" class="scroll-mt-24 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">04 / Integração Tecnológica</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">B2 DENTRO DO PRX PASS</h2>
+        <!-- --------------------------------------------------------------------- -->
+        <!-- SEÇÃO 02: QUEM SOMOS / RAFAEL MOLINA                                  -->
+        <!-- --------------------------------------------------------------------- -->
+        <section id="quem-somos" class="scroll-mt-24 space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] px-2 py-0.5 bg-blue-50 border border-blue-100 rounded-sm">02 / Autoridade</span>
+            <div class="h-px bg-slate-200 flex-1"></div>
           </div>
 
-          <div class="p-8 border border-slate-200 bg-gradient-to-r from-blue-50/30 via-white to-slate-50/50 rounded-sm">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-              <div class="md:col-span-8 space-y-4">
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold text-[#0B67FF] bg-blue-50 border border-blue-200 rounded-sm">
-                  <i data-lucide="award" class="w-3.5 h-3.5"></i>
-                  <span>Benefício Permanente no Aplicativo</span>
-                </span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">QUEM ESTÁ POR TRÁS DA PRX</h2>
 
-                <h3 class="text-xl sm:text-2xl font-bold text-slate-950">
-                  Transformar a B2 em presença contínua no celular da nova geração.
-                </h3>
-
-                <p class="text-sm text-slate-700 leading-relaxed">
-                  Queremos também transformar a B2 em benefício permanente dentro do aplicativo. A empresa poderá criar vantagens exclusivas para membros PRX PASS.
-                </p>
-
-                <div class="p-4 bg-white border border-blue-200 rounded-sm shadow-2xs">
-                  <p class="text-xs font-mono uppercase text-[#0B67FF] font-bold">Exemplo Real de Ativação:</p>
-                  <p class="text-sm font-semibold text-slate-900 mt-1 italic">
-                    “Faça seu evento com a B2 através da PRX e ganhe 10% de benefício na decoração.”
-                  </p>
-                </div>
-
-                <p class="text-xs text-slate-600 leading-relaxed">
-                  Descontos, upgrades, experiências e condições especiais podem ser desenvolvidos em conjunto. Assim, a B2 deixa de aparecer para o jovem apenas quando ele procura um evento: <span class="text-slate-900 font-semibold">ela passa a fazer parte do ecossistema dele</span>.
-                </p>
+          <div class="p-6 sm:p-8 border border-slate-200 bg-slate-50/50 rounded-sm space-y-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-200 pb-5">
+              <div>
+                <span class="text-xs font-mono font-bold uppercase text-[#0066FF] tracking-widest">Fundador &amp; Idealizador</span>
+                <h3 class="text-2xl font-black text-slate-950 mt-0.5">Rafael Molina</h3>
+                <p class="text-xs text-slate-500">Líder e comunicador da nova geração</p>
               </div>
-
-              <div class="md:col-span-4 p-5 bg-white border border-slate-200 rounded-sm space-y-4 text-center">
-                <div class="text-xs font-mono uppercase tracking-wider text-slate-400">Presença Constante</div>
-                <div class="text-4xl font-black text-slate-900">365 dias</div>
-                <p class="text-xs text-slate-500">
-                  Relacionamento contínuo muito antes do momento da decisão de compra da formatura ou festival.
-                </p>
-                <div class="pt-3 border-t border-slate-100 flex items-center justify-center gap-2 text-xs font-semibold text-[#0B67FF]">
-                  <i data-lucide="check-circle-2" class="w-4 h-4"></i>
-                  <span>Fidelização e LTV Ampliado</span>
+              <div class="flex items-center gap-3">
+                <div class="px-3 py-1.5 bg-white border border-slate-200 rounded-sm text-center">
+                  <span class="text-base font-black text-slate-900 font-mono block">2.3M+</span>
+                  <span class="text-[9px] font-semibold text-slate-400 uppercase">Seguidores</span>
+                </div>
+                <div class="px-3 py-1.5 bg-white border border-slate-200 rounded-sm text-center">
+                  <span class="text-base font-black text-[#0066FF] font-mono block">15-24</span>
+                  <span class="text-[9px] font-semibold text-slate-400 uppercase">Faixa Etária</span>
                 </div>
               </div>
+            </div>
+
+            <div class="space-y-4 text-sm text-slate-600 leading-relaxed">
+              <p>
+                Rafael Molina constrói diariamente um diálogo genuíno com mais de <strong class="text-slate-900">2,3 milhões de jovens</strong> nas redes sociais. Não apenas como audiência, mas como uma comunidade ativa que busca referência em estilo de vida, finanças, entretenimento e carreira.
+              </p>
+              <p>
+                A PRX nasce como o braço institucional, tecnológico e financeiro dessa comunidade. Não é um aplicativo genérico: é a plataforma proprietária pensada sob medida para quem já confia e acompanha a visão de Molina.
+              </p>
             </div>
           </div>
         </section>
 
-        <!-- ------------------------------------------------------------------- -->
-        <!-- SEÇÃO 06: PRX × B2 × ESCOLAS                                        -->
-        <!-- ------------------------------------------------------------------- -->
-        <section id="escolas" class="scroll-mt-24 space-y-6">
-          <div class="border-b border-slate-200 pb-4">
-            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0B67FF]">05 / Terceira Frente Comercial</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950 tracking-tight mt-1">PRX × B2 × ESCOLAS</h2>
+        <!-- --------------------------------------------------------------------- -->
+        <!-- SEÇÃO 03: A PARCERIA (Abas Interativas)                               -->
+        <!-- --------------------------------------------------------------------- -->
+        <section id="parceria" class="scroll-mt-24 space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] px-2 py-0.5 bg-blue-50 border border-blue-100 rounded-sm">03 / Sinergia de Negócio</span>
+            <div class="h-px bg-slate-200 flex-1"></div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            <div class="md:col-span-7 space-y-4">
-              <div class="inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold text-slate-800 bg-slate-100 border border-slate-200 rounded-sm">
-                <i data-lucide="school" class="w-3.5 h-3.5 text-[#0B67FF]"></i>
-                <span>Canal Institucional Escolar</span>
-              </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">ONDE A PARCERIA ACONTECE</h2>
 
-              <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
-                A relação de Rafael com escolas abre ainda uma terceira frente. Queremos levar a B2 para dentro das escolas através de ativações, experiências e projetos especiais.
-              </p>
+          <!-- Abas de Navegação -->
+          <div class="flex border-b border-slate-200 gap-2">
+            <button id="tab-btn-prx-b2" onclick="switchTab('prx-b2')" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all bg-[#0066FF] text-white shadow-xs cursor-pointer">
+              PRX para B2 Eventos
+            </button>
+            <button id="tab-btn-b2-prx" onclick="switchTab('b2-prx')" class="px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all text-slate-600 hover:text-slate-900 bg-slate-100 cursor-pointer">
+              B2 para PRX
+            </button>
+          </div>
+
+          <!-- Conteúdo Aba 1: O que a PRX entrega para a B2 -->
+          <div id="tab-content-prx-b2" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-5 border border-slate-200 bg-white rounded-sm space-y-2">
+                <span class="text-xs font-mono font-bold text-[#0066FF] uppercase">01. Canal Digital Direto</span>
+                <h4 class="text-base font-bold text-slate-900">Ativação no App PRX</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  A B2 ganha um canal direto dentro do app PRX para divulgar eventos, experiências e viagens para uma base jovem altamente qualificada.
+                </p>
+              </div>
 
               <div class="p-5 border border-slate-200 bg-white rounded-sm space-y-2">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-slate-900">
-                  <i data-lucide="zap" class="w-4 h-4 text-[#0B67FF]"></i>
-                  <span>Formato Proprietário: PRX BREAK</span>
-                </div>
-                <p class="text-xs text-slate-600 leading-relaxed">
-                  Intervenções rápidas no horário de intervalo/almoço, unindo música, tecnologia, empreendedorismo, novos talentos e experiências de marca.
+                <span class="text-xs font-mono font-bold text-[#0066FF] uppercase">02. Benefícios Exclusivos</span>
+                <h4 class="text-base font-bold text-slate-900">Vantagens &amp; Venda Antecipada</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  Usuários PRX têm acesso a pré-vendas, descontos e experiências exclusivas nos eventos da B2, acelerando a conversão de lotes.
                 </p>
               </div>
 
-              <p class="text-xs text-slate-600 leading-relaxed">
-                A partir daí, PRX e B2 podem desenvolver novos formatos proprietários para o ambiente escolar — e transformar relacionamento em <strong class="text-slate-900">futuras oportunidades de eventos</strong>.
-              </p>
+              <div class="p-5 border border-slate-200 bg-white rounded-sm space-y-2">
+                <span class="text-xs font-mono font-bold text-[#0066FF] uppercase">03. Ativações Presenciais</span>
+                <h4 class="text-base font-bold text-slate-900">Presença de Marca &amp; Conteúdo</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  A PRX participa dos eventos da B2 com espaços dedicados, ativações de marca, lounges exclusivos e cobertura com Rafael Molina.
+                </p>
+              </div>
             </div>
+          </div>
 
-            <div class="md:col-span-5 p-6 border border-slate-200 bg-slate-50/60 rounded-sm space-y-4">
-              <h4 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold">Jornada de Ativação Escolar</h4>
-              <div class="space-y-3 text-xs">
-                <div class="p-3 bg-white border border-slate-200 rounded-sm">
-                  <span class="font-bold text-slate-900 block">Passo 1: Presença Orgânica</span>
-                  <span class="text-slate-500 text-[11px]">Intervenções dinâmicas PRX BREAK no cotidiano dos alunos.</span>
-                </div>
-                <div class="p-3 bg-white border border-slate-200 rounded-sm">
-                  <span class="font-bold text-slate-900 block">Passo 2: Conexão via App</span>
-                  <span class="text-slate-500 text-[11px]">Download do PRX PASS e adesão das comissões escolares.</span>
-                </div>
-                <div class="p-3 bg-white border border-slate-200 rounded-sm">
-                  <span class="font-bold text-slate-900 block">Passo 3: Fechamento com B2</span>
-                  <span class="text-slate-500 text-[11px]">Contratação de formatura ou evento com benefício permanente.</span>
-                </div>
+          <!-- Conteúdo Aba 2: O que a B2 entrega para a PRX -->
+          <div id="tab-content-b2-prx" class="hidden space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="p-5 border border-slate-200 bg-white rounded-sm space-y-2">
+                <span class="text-xs font-mono font-bold text-[#EA580C] uppercase">01. Escala Presencial</span>
+                <h4 class="text-base font-bold text-slate-900">Ponto de Contato Físico</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  A B2 insere a PRX no momento de maior celebração dos jovens: o fechamento do ciclo escolar e início da vida adulta.
+                </p>
+              </div>
+
+              <div class="p-5 border border-slate-200 bg-white rounded-sm space-y-2">
+                <span class="text-xs font-mono font-bold text-[#EA580C] uppercase">02. Entrada Institucional</span>
+                <h4 class="text-base font-bold text-slate-900">Acesso a Comissões e Escolas</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  Abertura imediata de portas com comissões de formatura, diretores de colégios e lideranças estudantis.
+                </p>
+              </div>
+
+              <div class="p-5 border border-slate-200 bg-white rounded-sm space-y-2">
+                <span class="text-xs font-mono font-bold text-[#EA580C] uppercase">03. Criação Conjunta</span>
+                <h4 class="text-base font-bold text-slate-900">Eventos Co-Branded</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                  Criação de festas e festivais assinados em conjunto, como o Baile de Gala PRX × B2 e viagens exclusivas de formatura.
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- ------------------------------------------------------------------- -->
-        <!-- SEÇÃO 07: A VISÃO                                                   -->
-        <!-- ------------------------------------------------------------------- -->
-        <section id="visao" class="scroll-mt-24 p-8 sm:p-14 border border-slate-900 bg-slate-950 text-white rounded-sm space-y-8">
+        <!-- --------------------------------------------------------------------- -->
+        <!-- SEÇÃO 04: PRX PASS                                                    -->
+        <!-- --------------------------------------------------------------------- -->
+        <section id="prx-pass" class="scroll-mt-24 space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] px-2 py-0.5 bg-blue-50 border border-blue-100 rounded-sm">04 / Produto Central</span>
+            <div class="h-px bg-slate-200 flex-1"></div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">PRX PASS</h2>
+              <p class="text-sm text-slate-500 mt-1">O passaporte oficial de experiências e benefícios da nova geração.</p>
+            </div>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-purple-100 to-blue-100 text-slate-800 text-xs font-mono font-bold rounded-sm border border-purple-200">
+              <i data-lucide="ticket" class="w-3.5 h-3.5 text-[#0066FF]"></i>
+              <span>Assinatura Digital</span>
+            </span>
+          </div>
+
+          <div class="p-6 sm:p-8 border border-slate-200 bg-slate-50/40 rounded-sm space-y-6">
+            <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+              O <strong class="text-slate-950">PRX Pass</strong> é o coração da experiência digital: um clube de assinatura integrado ao app que confere status, descontos reais e acesso prioritário aos melhores eventos do país.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="p-4 bg-white border border-slate-200 rounded-sm">
+                <i data-lucide="ticket" class="w-5 h-5 text-[#0066FF] mb-2"></i>
+                <h4 class="text-xs font-bold text-slate-900 uppercase">Ingressos</h4>
+                <p class="text-[11px] text-slate-500 mt-1">Descontos e fila prioritária nos eventos produzidos pela B2.</p>
+              </div>
+
+              <div class="p-4 bg-white border border-slate-200 rounded-sm">
+                <i data-lucide="coffee" class="w-5 h-5 text-[#0066FF] mb-2"></i>
+                <h4 class="text-xs font-bold text-slate-900 uppercase">Marcas Parceiras</h4>
+                <p class="text-[11px] text-slate-500 mt-1">Benefícios em cinema, moda, streaming, gastronomia e transporte.</p>
+              </div>
+
+              <div class="p-4 bg-white border border-slate-200 rounded-sm">
+                <i data-lucide="award" class="w-5 h-5 text-[#0066FF] mb-2"></i>
+                <h4 class="text-xs font-bold text-slate-900 uppercase">Acesso VIP</h4>
+                <p class="text-[11px] text-slate-500 mt-1">Lounge exclusivo PRX nos maiores festivais da B2.</p>
+              </div>
+
+              <div class="p-4 bg-white border border-slate-200 rounded-sm">
+                <i data-lucide="zap" class="w-5 h-5 text-[#0066FF] mb-2"></i>
+                <h4 class="text-xs font-bold text-slate-900 uppercase">Cashback</h4>
+                <p class="text-[11px] text-slate-500 mt-1">Pontos e recompensas automáticas dentro da carteira digital.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- --------------------------------------------------------------------- -->
+        <!-- SEÇÃO 05: ESCOLAS & PARCERIAS EDUCACIONAIS                            -->
+        <!-- --------------------------------------------------------------------- -->
+        <section id="escolas" class="scroll-mt-24 space-y-6">
+          <div class="flex items-center gap-3">
+            <span class="text-xs font-mono font-bold uppercase tracking-widest text-[#0066FF] px-2 py-0.5 bg-blue-50 border border-blue-100 rounded-sm">05 / Expansão Institucional</span>
+            <div class="h-px bg-slate-200 flex-1"></div>
+          </div>
+
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">O PILAR EDUCACIONAL</h2>
+
+          <div class="p-6 border border-slate-200 bg-white rounded-sm space-y-4">
+            <p class="text-sm sm:text-base text-slate-700 leading-relaxed">
+              Tanto a PRX quanto a B2 têm como público primordial os estudantes em fase de conclusão de ensino médio e graduação. Criamos uma frente específica para dialogar com escolas particulares e universidades.
+            </p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-sm">
+                <i data-lucide="graduation-cap" class="w-5 h-5 text-[#0066FF] mb-2"></i>
+                <h4 class="text-xs font-bold text-slate-900">Palestras de Liderança</h4>
+                <p class="text-[11px] text-slate-500 mt-1">Encontros com Rafael Molina sobre empreendedorismo e educação financeira.</p>
+              </div>
+              <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-sm">
+                <i data-lucide="school" class="w-5 h-5 text-[#0066FF] mb-2"></i>
+                <h4 class="text-xs font-bold text-slate-900">Plano Alunos &amp; Pais</h4>
+                <p class="text-[11px] text-slate-500 mt-1">Benefícios integrados para as famílias de formandos e comissões.</p>
+              </div>
+              <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-sm">
+                <i data-lucide="activity" class="w-5 h-5 text-[#0066FF] mb-2"></i>
+                <h4 class="text-xs font-bold text-slate-900">Captação de Formaturas</h4>
+                <p class="text-[11px] text-slate-500 mt-1">A PRX atua como indutora para que comissões escolham a B2 como operadora.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- --------------------------------------------------------------------- -->
+        <!-- SEÇÃO 06: A VISÃO (Fechamento Estratégico - Barra Inferior do F)       -->
+        <!-- --------------------------------------------------------------------- -->
+        <section id="visao" class="scroll-mt-24 p-8 sm:p-12 bg-slate-950 text-white rounded-sm space-y-8">
           <div class="space-y-3">
             <span class="text-xs font-mono uppercase tracking-widest text-[#00D2FF] font-bold">06 / O Próximo Nível</span>
             <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">A VISÃO</h2>
@@ -754,19 +793,16 @@
             </div>
           </div>
 
+          <!-- Gatilho de Ação Exclusivo: Apenas Salvar/Exportar PDF -->
           <div class="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 no-print">
             <div class="text-xs text-slate-400 text-center sm:text-left">
               Pronto para transformar essa aliança em resultados práticos?
             </div>
-            <div class="flex items-center gap-3 w-full sm:w-auto">
-              <button onclick="window.print()" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold text-slate-300 bg-slate-900 hover:bg-slate-800 border border-slate-700 rounded-sm transition-colors">
+            <div class="flex items-center justify-end w-full sm:w-auto">
+              <button onclick="window.print()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#7928CA] to-[#0066FF] hover:brightness-110 rounded-sm transition-all shadow-md active:scale-[0.98] cursor-pointer">
                 <i data-lucide="file-down" class="w-4 h-4"></i>
-                <span>Salvar PDF</span>
+                <span>Salvar / Exportar Proposta em PDF</span>
               </button>
-              <a href="mailto:contato@prx.com.br?subject=Alian%C3%A7a%20Estrat%C3%A9gica%20PRX%20%C3%97%20B2%20Eventos" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3 text-xs sm:text-sm font-bold text-slate-950 bg-white hover:bg-slate-100 rounded-sm transition-all shadow-md active:scale-[0.98]">
-                <span>Agendar Reunião Executiva</span>
-                <i data-lucide="external-link" class="w-4 h-4"></i>
-              </a>
             </div>
           </div>
         </section>
@@ -776,40 +812,40 @@
   </main>
 
   <!-- ========================================================================= -->
-  <!-- RODAPÉ OFICIAL COM LOGO VIRAWEB                                           -->
+  <!-- RODAPÉ OFICIAL (Com Assinatura ViraWeb & viraweb3.png Sem Cortes)         -->
   <!-- ========================================================================= -->
   <footer class="border-t border-slate-200 bg-slate-50/70 py-12 mt-16 no-print">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
         <!-- Logos da Parceria no Rodapé -->
         <div class="flex items-center gap-4">
-          <svg class="w-20 h-auto overflow-visible" viewBox="0 0 380 230" fill="none">
-            <path d="M 132 18 L 190 18 L 165 47 L 183 68 L 157 98 L 132 98 L 160 68 L 142 47 Z" fill="#0F172A" />
-            <path d="M 226 18 L 248 18 L 202 68 L 222 90 L 198 98 L 181 98 L 196 82 L 176 60 Z" fill="url(#nav-prx-grad)" />
-            <path d="M 85 116 L 126 116 C 145 116 156 125 156 139 C 156 154 144 163 126 163 L 105 163 L 105 192 L 85 192 Z M 105 131 L 105 148 L 124 148 C 133 148 138 144 138 139 C 138 135 133 131 124 131 Z" fill="#0F172A" />
-            <path d="M 172 116 L 214 116 C 232 116 244 125 244 138 C 244 149 235 156 222 159 L 246 192 L 224 192 L 203 163 L 192 163 L 192 192 L 172 192 Z M 192 131 L 192 147 L 211 147 C 221 147 226 143 226 139 C 226 134 221 131 211 131 Z" fill="#0F172A" />
-            <path d="M 258 116 L 279 116 L 297 150 L 315 116 L 336 116 L 308 154 L 338 192 L 316 192 L 297 158 L 278 192 L 256 192 L 286 154 Z" fill="url(#nav-prx-grad)" />
+          <svg class="w-20 h-auto overflow-visible" viewBox="0 0 500 350" fill="none">
+            <path d="M 155 25 L 215 25 L 275 85 L 215 145 L 155 145 L 215 85 Z" fill="#0F172A" />
+            <path d="M 345 25 L 285 25 L 225 85 L 285 145 L 345 145 L 285 85 Z" fill="url(#nav-prx-grad)" />
+            <path d="M 75 175 L 138 175 C 160 175 172 186 172 201 C 172 216 160 227 138 227 L 103 227 L 103 265 L 75 265 Z M 103 197 L 103 205 L 135 205 C 144 205 149 203 149 201 C 149 199 144 197 135 197 Z" fill="#0F172A" />
+            <path d="M 205 175 L 268 175 C 290 175 302 186 302 201 C 302 214 292 222 278 225 L 305 265 L 275 265 L 250 227 L 233 227 L 233 265 L 205 265 Z M 233 197 L 233 205 L 265 205 C 274 205 279 203 279 201 C 279 199 274 197 265 197 Z" fill="#0F172A" />
+            <path d="M 330 175 L 360 175 L 388 220 L 416 175 L 446 175 L 404 225 L 448 265 L 418 265 L 388 230 L 358 265 L 328 265 L 372 225 Z" fill="url(#nav-prx-grad)" />
           </svg>
           <span class="text-slate-300 text-sm">×</span>
-          <svg class="w-16 h-auto overflow-visible" viewBox="0 0 200 90" fill="none">
-            <path d="M 16 28 L 26 15 L 30 33 L 19 37 Z" fill="#D28628" />
-            <path d="M 26 15 L 43 23 L 58 35 L 35 48 Z" fill="#9C4A08" />
-            <path d="M 26 36 C 25 21 27 10 30 3 C 32 1 34 6 36 12 C 40 19 47 24 55 33 C 60 38 60 42 58 45 C 50 49 41 51 35 48 C 29 46 27 41 26 36 Z" fill="#FF6500" />
-            <path d="M 28 30 C 28 19 30 11 31 6 C 32 5 34 10 36 15 C 40 22 46 26 51 33 C 54 38 52 42 48 44 C 42 47 36 47 32 44 C 29 40 28 35 28 30 Z" fill="#FFA533" />
-            <path d="M 19 37 L 35 48 L 34 81 C 28 81 22 78 17 71 C 12 64 12 47 19 37 Z" fill="#E2A64E" />
-            <path d="M 35 48 L 65 37 L 64 67 C 56 75 46 80 34 81 Z" fill="#D38E2F" />
-            <text x="80" y="74" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="600" font-size="65" fill="#474B51" letter-spacing="-0.02em">B2</text>
+          <svg class="w-16 h-auto overflow-visible" viewBox="0 0 240 100" fill="none">
+            <path d="M 18 30 L 29 16 L 33 35 L 21 40 Z" fill="#C97B1A" />
+            <path d="M 29 16 L 47 24 L 62 37 L 38 52 Z" fill="#964202" />
+            <path d="M 29 38 C 28 22 30 11 33 4 C 35 2 37 7 40 14 C 44 21 51 26 59 35 C 64 40 64 44 62 48 C 54 52 44 54 38 51 C 32 49 30 43 29 38 Z" fill="#FF5900" />
+            <path d="M 31 32 C 31 20 33 12 34 7 C 35 6 37 11 39 16 C 43 23 49 28 55 35 C 57 40 55 44 51 46 C 45 49 39 49 35 46 C 32 42 31 37 31 32 Z" fill="#FFA326" />
+            <path d="M 21 40 L 38 52 L 37 87 C 30 87 24 84 19 76 C 13 69 13 51 21 40 Z" fill="#E09F44" />
+            <path d="M 38 52 L 70 40 L 69 72 C 60 80 50 86 37 87 Z" fill="#D28320" />
+            <text x="86" y="79" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="70" fill="#3F4349" letter-spacing="-0.03em">B2</text>
           </svg>
           <span class="text-xs text-slate-500 font-medium border-l border-slate-200 pl-4 ml-2">
-            © 2026 Aliança PRX & B2 Eventos. Todos os direitos reservados.
+            © 2026 Aliança PRX &amp; B2 Eventos. Todos os direitos reservados.
           </span>
         </div>
 
-        <!-- Desenvolvido por ViraWeb com o logotipo oficial viraweb3.png -->
+        <!-- Assinatura Mandatória ViraWeb (Sem cortes) -->
         <div class="flex items-center gap-3">
           <span class="text-xs text-slate-500 font-medium">Desenvolvido por</span>
-          <a href="https://viraweb.online" target="_blank" rel="noopener noreferrer" title="ViraWeb — Engenharia de Software & IA" class="inline-flex items-center gap-2 group transition-transform duration-200 hover:scale-[1.03]">
-            <img id="footer-viraweb-logo" src="https://viraweb.online/viraweb3.png" alt="ViraWeb Logo" class="h-8 w-auto object-contain" />
+          <a href="https://viraweb.online" target="_blank" rel="noopener noreferrer" title="ViraWeb — Engenharia de Software &amp; Inteligência Artificial" class="inline-flex items-center gap-2 group transition-transform duration-200 hover:scale-[1.03] cursor-pointer overflow-visible">
+            <img id="footer-viraweb-logo" src="https://viraweb.online/viraweb3.png" alt="ViraWeb Logo" class="h-10 w-auto max-w-none object-contain drop-shadow-xs" />
           </a>
         </div>
       </div>
@@ -822,6 +858,99 @@
       lucide.createIcons();
     }
 
+    // Variáveis de controle da Apresentação Inicial
+    let introTimers = [];
+
+    function runIntroAnimation() {
+      clearIntroTimers();
+      const splash = document.getElementById("intro-splash");
+      if (!splash) return;
+
+      splash.classList.remove("opacity-0", "pointer-events-none", "scale-105");
+      splash.classList.add("opacity-100");
+
+      const parts = [
+        { id: "splash-part-emblem", transform: "translateY(0px)", opacity: "1" },
+        { id: "splash-part-p", transform: "translateY(0px)", opacity: "1" },
+        { id: "splash-part-r", transform: "translateY(0px)", opacity: "1" },
+        { id: "splash-part-x", transform: "translateY(0px)", opacity: "1" },
+        { id: "splash-part-slogan", transform: "translateY(0px)", opacity: "1" },
+        { id: "splash-part-b2", transform: "translateY(0px)", opacity: "1" },
+        { id: "splash-part-sub", transform: "translateY(0px)", opacity: "1" }
+      ];
+
+      // Reset inicial
+      parts.forEach((p, idx) => {
+        const el = document.getElementById(p.id);
+        if (el) {
+          if (idx <= 3) el.style.transform = "translateY(-140px)";
+          else el.style.transform = "translateY(20px)";
+          el.style.opacity = "0";
+        }
+      });
+
+      for (let i = 0; i <= 7; i++) {
+        const pill = document.getElementById(`pill-${i}`);
+        if (pill) {
+          pill.className = "h-1 transition-all duration-300 rounded-sm w-1.5 bg-zinc-200";
+        }
+      }
+
+      // Cadência de 0.3s por etapa (300ms)
+      parts.forEach((p, idx) => {
+        const t = setTimeout(() => {
+          const el = document.getElementById(p.id);
+          if (el) {
+            el.style.transform = p.transform;
+            el.style.opacity = p.opacity;
+          }
+          const pill = document.getElementById(`pill-${idx}`);
+          if (pill) {
+            pill.className = "h-1 transition-all duration-300 rounded-sm w-5 bg-[#0066FF]";
+          }
+        }, 300 * (idx + 1));
+        introTimers.push(t);
+      });
+
+      // Fechamento automático suave aos 2.8s
+      const endTimer = setTimeout(() => {
+        const pill = document.getElementById("pill-7");
+        if (pill) pill.className = "h-1 transition-all duration-300 rounded-sm w-5 bg-[#0066FF]";
+        dismissIntroSplash();
+      }, 2800);
+      introTimers.push(endTimer);
+    }
+
+    function clearIntroTimers() {
+      introTimers.forEach(t => clearTimeout(t));
+      introTimers = [];
+    }
+
+    function dismissIntroSplash() {
+      clearIntroTimers();
+      const splash = document.getElementById("intro-splash");
+      if (splash) {
+        splash.classList.remove("opacity-100");
+        splash.classList.add("opacity-0", "pointer-events-none", "scale-105");
+      }
+    }
+
+    function reopenIntroSplash() {
+      runIntroAnimation();
+    }
+
+    // Teclas Escape, Enter ou Espaço para pular
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+        dismissIntroSplash();
+      }
+    });
+
+    // Iniciar animação ao carregar
+    window.addEventListener("DOMContentLoaded", () => {
+      runIntroAnimation();
+    });
+
     // Controle de Abas da Seção de Parcerias
     function switchTab(tabId) {
       const tab1Content = document.getElementById("tab-content-prx-b2");
@@ -832,12 +961,12 @@
       if (tabId === 'prx-b2') {
         tab1Content.classList.remove('hidden');
         tab2Content.classList.add('hidden');
-        tab1Btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all bg-[#0B67FF] text-white shadow-xs cursor-pointer";
+        tab1Btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all bg-[#0066FF] text-white shadow-xs cursor-pointer";
         tab2Btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all text-slate-600 hover:text-slate-900 bg-slate-100 cursor-pointer";
       } else {
         tab1Content.classList.add('hidden');
         tab2Content.classList.remove('hidden');
-        tab2Btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all bg-[#0B67FF] text-white shadow-xs cursor-pointer";
+        tab2Btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all bg-[#0066FF] text-white shadow-xs cursor-pointer";
         tab1Btn.className = "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-sm transition-all text-slate-600 hover:text-slate-900 bg-slate-100 cursor-pointer";
       }
       if (window.lucide) {
@@ -845,7 +974,7 @@
       }
     }
 
-    // Replay da animação PRX ao clicar
+    // Replay da animação PRX no Hero ao clicar
     function replayPrxAnimation() {
       const parts = ['prx-part-emblem', 'prx-part-p', 'prx-part-r', 'prx-part-x', 'prx-part-slogan'];
       const classes = ['prx-drop-emblem', 'prx-drop-p', 'prx-drop-r', 'prx-drop-x', 'prx-drop-slogan'];
@@ -854,7 +983,7 @@
         const el = document.getElementById(id);
         if (el) {
           el.classList.remove(classes[idx]);
-          void el.offsetWidth; // trigger reflow
+          void el.offsetWidth; // reflow
           el.classList.add(classes[idx]);
         }
       });
